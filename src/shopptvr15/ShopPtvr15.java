@@ -9,7 +9,7 @@ import classes.CreateCustomer;
 import classes.CreateProduct;
 import classes.Customer;
 import classes.History;
-import classes.Product;
+import entity.Product;
 import classes.Purchase;
 import java.util.Calendar;
 import java.util.GregorianCalendar;

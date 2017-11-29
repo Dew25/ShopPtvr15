@@ -5,6 +5,7 @@
  */
 package classes;
 
+import entity.Product;
 import java.util.ArrayList;
 import java.util.List;
 
