@@ -6,27 +6,39 @@
 package entity;
 
 import java.util.Objects;
+<<<<<<< HEAD:src/entity/Product.java
 import javax.persistence.Basic;
 import javax.persistence.Column;
+=======
+>>>>>>> 8a6ce5a883beb2e541427bbccb08beeafc60d4ac:src/entity/Product.java
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+<<<<<<< HEAD:src/entity/Product.java
 import javax.persistence.Table;
+=======
+>>>>>>> 8a6ce5a883beb2e541427bbccb08beeafc60d4ac:src/entity/Product.java
 
 /**
  *
  * @author Melnikov
  */
 @Entity
+<<<<<<< HEAD:src/entity/Product.java
 @Table(name = "product")
+=======
+>>>>>>> 8a6ce5a883beb2e541427bbccb08beeafc60d4ac:src/entity/Product.java
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+<<<<<<< HEAD:src/entity/Product.java
     
     @Basic(optional = false)
     @Column(unique = true)
+=======
+>>>>>>> 8a6ce5a883beb2e541427bbccb08beeafc60d4ac:src/entity/Product.java
     private String name;
     
     @Basic(optional = false)

@@ -7,7 +7,12 @@ package shopptvr15;
 
 import classes.CreateCustomer;
 import classes.CreateProduct;
+<<<<<<< HEAD
 import entity.Customer;
+=======
+import classes.Customer;
+import classes.History;
+>>>>>>> 8a6ce5a883beb2e541427bbccb08beeafc60d4ac
 import entity.Product;
 import classes.Purchase;
 import java.util.List;
