@@ -5,8 +5,12 @@
  */
 package classes;
 
+import entity.Customer;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -16,6 +20,29 @@ public class CreateCustomer {
 
     public CreateCustomer() {
     }
+    public boolean addCustomerToBase(String name, String surname, String code, Integer money){
+        Customer customer = new Customer(name, surname, code, money);
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ShopPtvr15PU");
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(customer);
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }finally{
+            if(em != null){
+                em.close();
+            }
+            if(emf != null){
+                emf.close();
+            }
+        }
+        
+        
+    }
+    
     public List<Customer> doCreate(){
         List<Customer> customers = new ArrayList<>();
         

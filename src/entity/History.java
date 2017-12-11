@@ -3,24 +3,55 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package classes;
+package entity;
 
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author Melnikov
  */
+@Entity
+@Table(name = "history")
 public class History {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @OneToOne(optional = false)
     private Product product;
+    
+    @OneToOne(optional = false)
     private Customer customer;
+    
+    @Basic(optional = false)
     private Integer quantity;
+    
+    @Basic(optional = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date datePurchase;
 
     public History() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public Product getProduct() {
         return product;
     }
@@ -94,6 +125,8 @@ public class History {
         }
         return true;
     }
+
+
     
     
 }

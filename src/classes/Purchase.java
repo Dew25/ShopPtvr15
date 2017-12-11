@@ -5,6 +5,9 @@
  */
 package classes;
 
+import entity.History;
+import entity.Product;
+import entity.Customer;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Objects;

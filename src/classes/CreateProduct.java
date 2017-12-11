@@ -5,6 +5,7 @@
  */
 package classes;
 
+import entity.Product;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class CreateProduct {
 
     public CreateProduct() {
     }
+    
     public List<Product> doCreate(){
         List<Product> products = new ArrayList<>();
         

@@ -1,25 +1,65 @@
+package entity;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package classes;
+
 
 import java.util.Objects;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Melnikov
  */
+@Entity
+@Table(name = "customer")
 public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Basic(optional = false)
     private String name;
+    
+    @Basic(optional = false)
     private String surname;
+    
+    @Basic(optional = false)
+    @Column(unique = true)
     private String code;
+    
+    @Basic(optional = false)
     private Integer money;
 
     public Customer() {
     }
 
+    public Customer(String name, String surname, String code, Integer money) {
+        this.name = name;
+        this.surname = surname;
+        this.code = code;
+        this.money = money;
+    }
+
+    
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public String getName() {
         return name;
     }
@@ -93,6 +133,8 @@ public class Customer {
         }
         return true;
     }
+
+    
 
     
     
