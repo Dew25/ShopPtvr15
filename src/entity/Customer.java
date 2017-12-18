@@ -1,11 +1,12 @@
+package entity;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entity;
 
-import java.io.Serializable;
+
 import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -17,43 +18,40 @@ import javax.persistence.Table;
 
 /**
  *
- * @author jvm
+ * @author Melnikov
  */
 @Entity
 @Table(name = "customer")
-public class Customer implements Serializable {
-
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Basic(optional = false)
-    @Column(unique = true,name = "name")
     private String name;
     
     @Basic(optional = false)
-    @Column(unique = true,name="surname")
     private String surname;
     
     @Basic(optional = false)
-    @Column(name = "money")
-    private Long money;
-    @Column(name = "phone")
-    private String phone;
-    @Column(name = "city")
-    private String city;
+    @Column(unique = true)
+    private String code;
+    
+    @Basic(optional = false)
+    private Integer money;
 
     public Customer() {
     }
 
-    public Customer(String name, String surname, Long money, String phone, String city) {
+    public Customer(String name, String surname, String code, Integer money) {
         this.name = name;
         this.surname = surname;
+        this.code = code;
         this.money = money;
-        this.phone = phone;
-        this.city = city;
     }
 
+    
+    
     public Long getId() {
         return id;
     }
@@ -61,7 +59,7 @@ public class Customer implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
+    
     public String getName() {
         return name;
     }
@@ -78,39 +76,34 @@ public class Customer implements Serializable {
         this.surname = surname;
     }
 
-    public Long getMoney() {
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Integer getMoney() {
         return money;
     }
 
-    public void setMoney(Long money) {
+    public void setMoney(Integer money) {
         this.money = money;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
+    @Override
+    public String toString() {
+        return "Customer{" + "nama=" + name + ", surname=" + surname + ", code=" + code + ", money=" + money + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.id);
-        hash = 79 * hash + Objects.hashCode(this.name);
-        hash = 79 * hash + Objects.hashCode(this.surname);
-        hash = 79 * hash + Objects.hashCode(this.money);
-        hash = 79 * hash + Objects.hashCode(this.phone);
-        hash = 79 * hash + Objects.hashCode(this.city);
+        hash = 41 * hash + Objects.hashCode(this.name);
+        hash = 41 * hash + Objects.hashCode(this.surname);
+        hash = 41 * hash + Objects.hashCode(this.code);
+        hash = 41 * hash + Objects.hashCode(this.money);
         return hash;
     }
 
@@ -132,13 +125,7 @@ public class Customer implements Serializable {
         if (!Objects.equals(this.surname, other.surname)) {
             return false;
         }
-        if (!Objects.equals(this.phone, other.phone)) {
-            return false;
-        }
-        if (!Objects.equals(this.city, other.city)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.code, other.code)) {
             return false;
         }
         if (!Objects.equals(this.money, other.money)) {
@@ -147,10 +134,9 @@ public class Customer implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" + "id=" + id + ", name=" + name + ", surname=" + surname + ", money=" + money + ", phone=" + phone + ", city=" + city + '}';
-    }
+    
+
+    
     
     
 }

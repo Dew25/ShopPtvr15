@@ -5,7 +5,7 @@
  */
 package entity;
 
-import java.io.Serializable;
+import entity.Product;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Basic;
@@ -20,36 +20,29 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author jvm
+ * @author Melnikov
  */
 @Entity
 @Table(name = "history")
-public class History implements Serializable {
-
+public class History {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date transactionDate;
-    
-    @OneToOne(optional = false,orphanRemoval = true)
-    private Customer customer;
-    
-    @OneToOne(optional = false,orphanRemoval = true)
+    @OneToOne(optional = false)
     private Product product;
     
+    @OneToOne(optional = false)
+    private Customer customer;
+    
     @Basic(optional = false)
-    private Integer num;
+    private Integer quantity;
+    
+    @Basic(optional = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date datePurchase;
 
     public History() {
-    }
-
-    public History(Date transactionDate, Customer customer, Product product, Integer num) {
-        this.transactionDate = transactionDate;
-        this.customer = customer;
-        this.product = product;
-        this.num = num;
     }
 
     public Long getId() {
@@ -59,13 +52,13 @@ public class History implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public Date getTransactionDate() {
-        return transactionDate;
+    
+    public Product getProduct() {
+        return product;
     }
 
-    public void setTransactionDate(Date transactionDate) {
-        this.transactionDate = transactionDate;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Customer getCustomer() {
@@ -76,30 +69,34 @@ public class History implements Serializable {
         this.customer = customer;
     }
 
-    public Product getProduct() {
-        return product;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    public Integer getNum() {
-        return num;
+    public Date getDatePurchase() {
+        return datePurchase;
     }
 
-    public void setNum(Integer num) {
-        this.num = num;
+    public void setDatePurchase(Date datePurchase) {
+        this.datePurchase = datePurchase;
+    }
+
+    @Override
+    public String toString() {
+        return "History{" + "product=" + product.getName() + ", customer=" + customer.getName()+" "+customer.getSurname() + ", quantity=" + quantity + ", datePurchase=" + datePurchase.toString() + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 43 * hash + Objects.hashCode(this.id);
-        hash = 43 * hash + Objects.hashCode(this.transactionDate);
-        hash = 43 * hash + Objects.hashCode(this.customer);
-        hash = 43 * hash + Objects.hashCode(this.product);
-        hash = 43 * hash + Objects.hashCode(this.num);
+        hash = 59 * hash + Objects.hashCode(this.product);
+        hash = 59 * hash + Objects.hashCode(this.customer);
+        hash = 59 * hash + Objects.hashCode(this.quantity);
+        hash = 59 * hash + Objects.hashCode(this.datePurchase);
         return hash;
     }
 
@@ -115,28 +112,22 @@ public class History implements Serializable {
             return false;
         }
         final History other = (History) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.transactionDate, other.transactionDate)) {
+        if (!Objects.equals(this.product, other.product)) {
             return false;
         }
         if (!Objects.equals(this.customer, other.customer)) {
             return false;
         }
-        if (!Objects.equals(this.product, other.product)) {
+        if (!Objects.equals(this.quantity, other.quantity)) {
             return false;
         }
-        if (!Objects.equals(this.num, other.num)) {
+        if (!Objects.equals(this.datePurchase, other.datePurchase)) {
             return false;
         }
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "History{" + "id=" + id + ", transactionDate=" + transactionDate.toString() + ", customer=" + customer.toString() + ", product=" + product.toString() + ", num=" + num + '}';
-    }
+
     
     
 }

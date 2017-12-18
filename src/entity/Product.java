@@ -6,35 +6,79 @@
 package entity;
 
 import java.util.Objects;
+<<<<<<< HEAD
 import javax.persistence.Basic;
 import javax.persistence.Column;
+=======
+<<<<<<< HEAD:src/entity/Product.java
+import javax.persistence.Basic;
+import javax.persistence.Column;
+=======
+>>>>>>> 8a6ce5a883beb2e541427bbccb08beeafc60d4ac:src/entity/Product.java
+>>>>>>> 09bf7aaaac14b53b4bf62fd97a89226d6575419e
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+<<<<<<< HEAD
 import javax.persistence.Table;
+=======
+<<<<<<< HEAD:src/entity/Product.java
+import javax.persistence.Table;
+=======
+>>>>>>> 8a6ce5a883beb2e541427bbccb08beeafc60d4ac:src/entity/Product.java
+>>>>>>> 09bf7aaaac14b53b4bf62fd97a89226d6575419e
 
 /**
  *
  * @author Melnikov
  */
 @Entity
+<<<<<<< HEAD
 @Table(name = "product")
+=======
+<<<<<<< HEAD:src/entity/Product.java
+@Table(name = "product")
+=======
+>>>>>>> 8a6ce5a883beb2e541427bbccb08beeafc60d4ac:src/entity/Product.java
+>>>>>>> 09bf7aaaac14b53b4bf62fd97a89226d6575419e
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+<<<<<<< HEAD
     @Basic(optional = false)
     @Column(unique = true)
     private String name;
     @Basic(optional = false)
     private Integer price;
+=======
+<<<<<<< HEAD:src/entity/Product.java
+    
+    @Basic(optional = false)
+    @Column(unique = true)
+=======
+>>>>>>> 8a6ce5a883beb2e541427bbccb08beeafc60d4ac:src/entity/Product.java
+    private String name;
+    
+    @Basic(optional = false)
+    private Integer price;
+    
+>>>>>>> 09bf7aaaac14b53b4bf62fd97a89226d6575419e
     @Basic(optional = false)
     private Integer quantity;
 
     public Product() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public String getName() {
         return name;
     }
@@ -96,6 +140,8 @@ public class Product {
         }
         return true;
     }
+
+    
     
     
 }
