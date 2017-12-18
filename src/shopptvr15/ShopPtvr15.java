@@ -5,15 +5,12 @@
  */
 package shopptvr15;
 
-import classes.CreateCustomer;
-import classes.CreateProduct;
-import classes.Customer;
-import classes.History;
 import entity.Product;
-import classes.Purchase;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+
 
 /**
  *
@@ -26,46 +23,28 @@ public class ShopPtvr15 {
      */
     public static void main(String[] args) {
 
-        CreateProduct createProduct = new CreateProduct();
-        List<Product> products = createProduct.doCreate();
-        
-        CreateCustomer createCustomer = new CreateCustomer();
-        List<Customer> customers = createCustomer.doCreate();
-
-        for (int i = 0; i < products.size(); i++) {
-            Product product = products.get(i);
-            System.out.println("До покупки состояние объекта product: " + product.toString());
-        }
-        System.out.println("");
-        for (int i = 0; i < customers.size(); i++) {
-            Customer customer = customers.get(i);
-            System.out.println("До покупки состояние объекта customer: " + customer.toString());
-        }
-
-        System.out.println("");
-
-        Purchase purchase = new Purchase();
-        purchase.setCustomer(customers.get(0));
-        purchase.setProduct(products.get(0));
-        purchase.setQuantity(3);
-        purchase.doPurchase();
-        
-        purchase.setCustomer(customers.get(1));
-        purchase.setProduct(products.get(2));
-        purchase.setQuantity(4);
-        purchase.doPurchase();
-        
-        System.out.println("");
-        for (int i = 0; i < products.size(); i++) {
-            Product product = products.get(i);
-            System.out.println("После покупки состояние объекта product: " + product.toString());
+        Product kolbasa = new Product();
+        kolbasa.setName("Колбаса");
+        kolbasa.setPrice(220);
+        kolbasa.setQuantity(10);
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ShopPtvr15PU");
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(kolbasa);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Ошибка!");
+        }finally{
+            if(em != null){
+                em.close();
+            }
+            if(emf != null){
+                emf.close();
+            }
         }
         
-        System.out.println("");
-        for (int i = 0; i < customers.size(); i++) {
-            Customer customer = customers.get(i);
-            System.out.println("После покупки состояние объекта customer: " + customer.toString());
-        }
+        
     }
 
 }
