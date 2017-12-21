@@ -5,13 +5,11 @@
  */
 package classes;
 
-<<<<<<< HEAD
+
 import entity.History;
 import entity.Product;
 import entity.Customer;
-=======
-import entity.Product;
->>>>>>> 8a6ce5a883beb2e541427bbccb08beeafc60d4ac
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Objects;

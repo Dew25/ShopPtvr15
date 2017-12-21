@@ -5,7 +5,6 @@
  */
 package entity;
 
-import entity.Product;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Basic;
